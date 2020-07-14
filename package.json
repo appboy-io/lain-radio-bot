@@ -1,0 +1,17 @@
+{
+  "name": "lain-radio-bot",
+  "version": "1.0.0",
+  "description": "LainChan radio bot",
+  "main": "bot.js",
+  "author": "Human Caching",
+  "dependencies": {
+    "discord.io": "^2.5.3",
+    "discord.js": "^12.2.0",
+    "node-opus": "^0.3.3",
+    "opusscript": "0.0.7",
+    "winston": "^3.3.2"
+  },
+  "scripts": {
+    "start": "node bot.js"
+  }
+}
