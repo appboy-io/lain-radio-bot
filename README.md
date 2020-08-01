@@ -6,7 +6,7 @@ I'm a big fan of LainChan and love listening to their radio station. So I made a
 
 If you're interested in adding this bot to your discord server, click the image below.
 
-<a href="https://discord.com/oauth2/authorize?client_id=732336528029646868&scope=bot" target="_blank"><img src="assets/lain-chan-bot-discord-button.png" width="100"></a>
+<a href="https://discord.com/oauth2/authorize?client_id=732336528029646868&scope=bot" target="_blank" rel="noopener"><img src="assets/lain-chan-bot-discord-button.png" width="100"></a>
 
 ## **How to run?**
 
