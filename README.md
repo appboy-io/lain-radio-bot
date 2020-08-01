@@ -2,6 +2,12 @@
 
 I'm a big fan of LainChan and love listening to their radio station. So I made a bot that pulls in the audio streams for all radio categories.
 
+## **Add bot to server**
+
+If you're interested in adding this bot to your discord server, click the image below.
+
+<a href="https://discord.com/oauth2/authorize?client_id=732336528029646868&scope=bot">![bot](assets/lain-chan-button.png)</a>
+
 ## **How to run?**
 
 You'll need a few things to get this up an running. So here are the steps:

@@ -102,7 +102,7 @@ function lainWelcome(cmd) {
         "\n" +
         "To play a station the command is: $lain [station of choice]" +
         "\n" +
-        "To get a list of commands and info: $lain info";
+        "To get a list of commands and info: $info";
       return message;
     default:
       console.log("Unsupported command");
