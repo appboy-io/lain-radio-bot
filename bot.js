@@ -62,6 +62,7 @@ client.on("message", async (receivedMessage) => {
     ) {
       console.log("in a voice channel, connecting now.");
       const connection = await receivedMessage.member.voice.channel.join();
+      connection.voice.setSelfDeaf(true);
       console.log("Radio channel passed: [" + singleArg + "]");
       let radioLink = lainRadioFetch(singleArg);
       console.log("Radio channel: " + radioLink);
@@ -75,6 +76,8 @@ client.on("message", async (receivedMessage) => {
         receivedMessage.channel.send("Now playing " + singleArg + " radio.");
         console.log("playing radio");
       });
+
+      dispatcher.on("debug", console.log);
 
       dispatcher.on("error", console.error);
     } else if (isLeaveCommand) {
@@ -97,7 +100,9 @@ function lainWelcome(cmd) {
         "Welcome to Lain Radio. Current radio stations are: " +
         [...radioLinkMap.keys()].join(", ") +
         "\n" +
-        "To play a station the command is: $lain [station of choice]";
+        "To play a station the command is: $lain [station of choice]" +
+        "\n" +
+        "To get a list of commands and info: $lain info";
       return message;
     default:
       console.log("Unsupported command");
