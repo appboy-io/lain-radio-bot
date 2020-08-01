@@ -1,4 +1,4 @@
-# **_Lain_Radio_Bot_**
+# **_Lain Radio Bot_**
 
 I'm a big fan of LainChan and love listening to their radio station. So I made a bot that pulls in the audio streams for all radio categories.
 
@@ -6,7 +6,7 @@ I'm a big fan of LainChan and love listening to their radio station. So I made a
 
 If you're interested in adding this bot to your discord server, click the image below.
 
-<a href="https://discord.com/oauth2/authorize?client_id=732336528029646868&scope=bot">[<img src="assets/lain-chan-bot-discord-button.png" width="100">](assets/lain-chan-bot-discord-button.png)</a>
+<a href="https://discord.com/oauth2/authorize?client_id=732336528029646868&scope=bot"><img src="assets/lain-chan-bot-discord-button.png" width="100"></a>
 
 ## **How to run?**
 
@@ -22,5 +22,5 @@ You'll need a few things to get this up an running. So here are the steps:
 
 ```
 npm install
-node bot.js
+npm start
 ```
