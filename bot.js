@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const SQL_CLIENT = require("./sql_client").client;
 
 const COMMAND_PREFIX = "lain";
 const COMMAND_LEAVE = "leave";
