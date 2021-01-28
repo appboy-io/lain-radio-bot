@@ -11,6 +11,7 @@ services:
       - lain_db
     environment:
       LainRadioToken: ${LainRadioToken}
+
   lain_db:
     image: postgres
     env_file:

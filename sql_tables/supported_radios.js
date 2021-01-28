@@ -28,4 +28,11 @@ let LAIN_EVERYTHING_RADIO = {
 }
 RADIOS.push(LAIN_EVERYTHING_RADIO);
 
+let UPDATE_QUERY = {
+    name: 'update-radios',
+    text: 'insert into radios (name, url, description) select $1, $2, $3 where not exists (select 1 from radios where name = $1);',
+    values: []
+}
+
 exports.RADIOS = RADIOS;
+exports.UPDATE_QUERY = UPDATE_QUERY

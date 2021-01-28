@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const SQL_CLIENT = require("./sql_client").client;
+const SQL_CLIENT = require("./sql_client");
 
 const COMMAND_PREFIX = "lain";
 const COMMAND_LEAVE = "leave";
@@ -29,12 +29,10 @@ client.on("ready", () => {
 
 client.login(botToken);
 
-const radioLinkMap = new Map([
-  [CYBERIA, CYBERIA_RADIO],
-  [SWING, SWING_RADIO],
-  [CAFE, CAFE_RADIO],
-  [EVERYTHING, EVERYTHING_RADIO],
-]);
+const radioLinkMap = async () => {
+  let radios = await SQL_CLIENT.getAvailableRadios();
+  return new Map(radios.map(radio => [radio.name, radio.url]));
+}
 
 //Client commands
 client.on("message", async (receivedMessage) => {
@@ -48,13 +46,13 @@ client.on("message", async (receivedMessage) => {
     let isLeaveCommand = COMMAND_LEAVE === cmd;
     let isInfoCommand = COMMAND_INFO === cmd;
     let isDonateCommand = COMMAND_DONATE === cmd;
-    let isRadioCommand = radioLinkMap.get(singleArg);
+    let isRadioCommand = await SQL_CLIENT.doesRadioExist(singleArg);
 
     console.log("Is lain command: " + isLainCommand);
     console.log("Is radio command: " + isRadioCommand);
 
     if (isLainCommand && !singleArg) {
-      let welcomeMessage = lainWelcome(cmd);
+      let welcomeMessage = await lainWelcome(cmd);
       receivedMessage.channel.send(welcomeMessage);
     } else if (
       isLainCommand &&
@@ -65,14 +63,14 @@ client.on("message", async (receivedMessage) => {
       const connection = await receivedMessage.member.voice.channel.join();
       connection.voice.setSelfDeaf(true);
       console.log("Radio channel passed: [" + singleArg + "]");
-      let radioLink = lainRadioFetch(singleArg);
-      console.log("Radio channel: " + radioLink);
+      let radioLink = await lainRadioFetch(singleArg);
+      console.log("Radio channel: " + JSON.stringify(radioLink));
       if (!radioLink) {
         receivedMessage.channel.send("Unsupported radio");
         return;
       }
 
-      const dispatcher = connection.play(radioLink);
+      const dispatcher = connection.play(radioLink.url);
       dispatcher.on("start", () => {
         receivedMessage.channel.send("Now playing " + singleArg + " radio.");
         console.log("playing radio");
@@ -94,12 +92,14 @@ client.on("message", async (receivedMessage) => {
   }
 });
 
-function lainWelcome(cmd) {
+async function lainWelcome(cmd) {
   switch (cmd) {
     case "lain":
+      let availableRadiosResults = await getRadios();
+      let availableRadios = availableRadiosResults.map((radios) => radios.name).join(", ")
       let message =
         "Welcome to Lain Radio. Current radio stations are: " +
-        [...radioLinkMap.keys()].join(", ") +
+        availableRadios +
         "\n" +
         "To play a station the command is: $lain [station of choice]" +
         "\n" +
@@ -111,8 +111,12 @@ function lainWelcome(cmd) {
   }
 }
 
-function lainRadioFetch(arg) {
-  return radioLinkMap.get(arg);
+async function lainRadioFetch(arg) {
+  return await SQL_CLIENT.getRadio(arg);
+}
+
+async function getRadios() {
+  return await SQL_CLIENT.getAvailableRadios();
 }
 
 function lainInfo() {
