@@ -9,4 +9,4 @@ jobs:
         name: Deploying to server
         env:
           SERVER: ${{ secrets.SERVER }}
-        run: echo "Working Action to deploy to $SERVER"
+        run: ./ .github/scripts/deploy.sh $SERVER
