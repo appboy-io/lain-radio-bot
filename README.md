@@ -15,12 +15,25 @@ You'll need a few things to get this up an running. So here are the steps:
 - Get a discord or find a discord that doesn't mind you adding a bot.
 - Create a bot on Discord's developer site: [here](https://discord.com/developers/applications)
 - Get your bot's token
-- On the system you're developing on, create an environment variable named LainRadioToken and set it to your bot's token.
+- On the system you're developing on, create an environment variable named `LainRadioToken` and set it to your bot's token.
 - Install [nodeJS](https://nodejs.org/en/)
 - Pull down project
-- In root of project, run the following commands
+- In root of project, you can run the following
+
+### Build the docker-compose environment
 
 ```
-npm install
-npm start
+docker-compose build
+```
+
+### Start application
+
+```
+docker-compose up
+```
+
+### Build and start application
+
+```
+docker-compose up --build
 ```
