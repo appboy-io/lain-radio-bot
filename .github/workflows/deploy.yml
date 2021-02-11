@@ -1,5 +1,7 @@
 name: Deploy release to server
 on: [push]
+env:
+  SERVER: ${{ secrets.SERVER }}
 jobs:
   deploy:
     name: Deploy job
@@ -8,8 +10,6 @@ jobs:
       - uses: actions/checkout@v2
       - shell: bash
         name: Deploying to server
-        env:
-          SERVER: ${{ secrets.SERVER }}
         run: |
           chmod +x ./scripts/deploy.sh $SERVER
           ./scripts/deploy.sh $SERVER
