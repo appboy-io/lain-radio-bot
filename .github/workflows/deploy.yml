@@ -11,5 +11,5 @@ jobs:
       - shell: bash
         name: Deploying to server
         run: |
-          chmod +x ./scripts/deploy.sh $SERVER
-          ./scripts/deploy.sh $SERVER
+          chmod +x ./scripts/deploy.sh
+          ./scripts/deploy.sh
