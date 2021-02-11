@@ -5,7 +5,8 @@ jobs:
     name: Deploy job
     runs-on: ubuntu-latest
     steps:
-      - name: Deploying to server
+      - shell: bash
+        name: Deploying to server
         env:
           SERVER: ${{ secrets.SERVER }}
-        run: echo Working Action to deploy to "$SERVER"
+        run: echo "Working Action to deploy to $SERVER"
