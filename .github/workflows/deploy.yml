@@ -9,4 +9,4 @@ jobs:
         name: Deploying to server
         env:
           SERVER: ${{ secrets.SERVER }}
-        run: ./.github/scripts/deploy.sh $SERVER
+        run: sh ./scripts/deploy.sh $SERVER
