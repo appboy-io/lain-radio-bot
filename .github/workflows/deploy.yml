@@ -1,0 +1,9 @@
+name: Deploy release to server
+on: [push]
+jobs:
+  deploy:
+    name: Deploy job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying to server
+        run: echo Working Action to deploy
