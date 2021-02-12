@@ -2,4 +2,4 @@
 
 echo "Deploying to the server at $SERVER"
 
-ssh $SERVER
+ssh user@$SERVER
