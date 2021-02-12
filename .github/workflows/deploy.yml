@@ -5,12 +5,12 @@ jobs:
   deploy:
     name: Deploy job
     runs-on: ubuntu-latest
+    env:
+      SERVER: ${{ secrets.SERVER }}
     steps:
       - uses: actions/checkout@v2
       - shell: bash
         name: Deploying to server
-        env:
-          SERVER: ${{ secrets.SERVER }}
         run: |
           chmod +x ./scripts/deploy.sh
           ./scripts/deploy.sh
