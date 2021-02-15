@@ -11,11 +11,12 @@ jobs:
       - uses: actions/checkout@v2
         name: Deploying to server
 
-      - shell: bash
-        env:
-          SERVER: ${{ secrets.SERVER }}
-          MESSAGE: ${{ secrets.MESSAGE }}
-        name: SSH Step
-        run: |
-          chmod +x ./scripts/deploy.sh
-          ./scripts/deploy.sh
+      - uses: fifsky/ssh-action@master
+        name: SSH step
+        with:
+          command: |
+            cd /home/lainradio/Projects/lain-radio-bot
+            ls -la
+          host: ${{ secrets.SERVER }}
+          user: ${{ secrets.USER }}
+          pass: ${{ secrets.PASSWORD }}
