@@ -3,6 +3,8 @@ on: [push]
 
 jobs:
   deploy:
+    environment:
+      name: lain-radio-bot
     name: Deploy job
     runs-on: ubuntu-latest
     steps:
