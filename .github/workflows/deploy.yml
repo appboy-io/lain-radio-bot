@@ -2,7 +2,7 @@ name: Deploy release to server
 on: [push]
 
 jobs:
-  deploy:
+  lain-radio-bot:
     environment:
       name: lain-radio-bot
     name: Deploy job
@@ -10,9 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Deploying to server
+
+      - shell: bash
         env:
           SERVER: ${{ secrets.SERVER }}
-      - shell: bash
+          MESSAGE: ${{ secrets.MESSAGE }}
         name: SSH Step
         run: |
           chmod +x ./scripts/deploy.sh
