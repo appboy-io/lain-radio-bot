@@ -17,7 +17,7 @@ jobs:
           command: |
             git clone https://github.com/human-caching/lain-radio-bot.git
             cd lain-radio-bot
-            git checkout master
+            git checkout github-actions-deploy
             sh ./scripts/startup.sh
           host: ${{ secrets.SERVER }}
           user: ${{ secrets.USER }}
