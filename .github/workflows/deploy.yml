@@ -15,8 +15,10 @@ jobs:
         name: SSH step
         with:
           command: |
-            cd /home/lainradio/Projects/lain-radio-bot
-            ls -la
+            git clone https://github.com/human-caching/lain-radio-bot.git
+            cd lain-radio-bot
+            git checkout master
+            sh ./scripts/startup.sh
           host: ${{ secrets.SERVER }}
           user: ${{ secrets.USER }}
           pass: ${{ secrets.PASSWORD }}
