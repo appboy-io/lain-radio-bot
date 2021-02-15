@@ -2,6 +2,6 @@
 
 echo "Deploying to the server at $SERVER"
 
-#ssh user@$SERVER
+ssh user@$SERVER
 
 printenv
