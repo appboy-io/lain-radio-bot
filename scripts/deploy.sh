@@ -1,5 +1,5 @@
 #!/bin/sh
 
-echo $MESSAGE
+echo "Deploying to $SERVER"
 
 ssh user@"$SERVER"
