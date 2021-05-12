@@ -69,8 +69,9 @@ client.on("message", async (receivedMessage) => {
         receivedMessage.channel.send("Unsupported radio");
         return;
       }
-
+      console.log("Running dispatcher to play radio");
       const dispatcher = connection.play(radioLink.url);
+      console.log("URL for dispatcher loaded");
       dispatcher.on("start", () => {
         receivedMessage.channel.send("Now playing " + singleArg + " radio.");
         console.log("playing radio");
@@ -79,6 +80,8 @@ client.on("message", async (receivedMessage) => {
       dispatcher.on("debug", console.log);
 
       dispatcher.on("error", console.error);
+      dispatcher.on("finish", () => console.log("Bot finished"));
+      dispatcher.on("close", () => console.log("Bot closed"));
     } else if (isLeaveCommand) {
       const connection = await receivedMessage.member.voice.channel.join();
       connection.disconnect();
